@@ -18,13 +18,13 @@ URI_SQLITE_DB = "test.db"
 
 
 def main():
-    st.title("My Super Calculator")
-    st.markdown("Enter data in database from sidebar, then run the **mighty** calculator")
+    st.title("Tell me a secret.")
+    st.markdown("Go on, I won't tell anybody :) ")
     
     conn = get_connection(URI_SQLITE_DB)
     init_db(conn)
 
-    build_sidebar(conn)
+    # build_sidebar(conn)
     display_data(conn)
     run_calculator(conn)
 
@@ -33,20 +33,25 @@ def init_db(conn: Connection):
     conn.execute(
         """CREATE TABLE IF NOT EXISTS test
             (
-                INPUT1 INT,
-                INPUT2 INT
+                INPUT TEXT
             );"""
     )
     conn.commit()
 
 
-def build_sidebar(conn: Connection):
-    st.sidebar.header("Configuration")
-    input1 = st.sidebar.slider("Input 1", 0, 100)
-    input2 = st.sidebar.slider("Input 2", 0, 100)
-    if st.sidebar.button("Save to database"):
-        conn.execute(f"INSERT INTO test (INPUT1, INPUT2) VALUES ({input1}, {input2})")
-        conn.commit()
+def build_input(conn: Connection):
+	input = st.text_input('Whisper into the fountain of secrets.')
+	if st.button("Save to database"):
+		conn.execute(f"INSERT INTO test (INPUT) VALUES ({input}")
+		conn.commit()
+
+#def build_sidebar(conn: Connection):
+#    st.sidebar.header("Configuration")
+ #   input1 = st.sidebar.slider("Input 1", 0, 100)
+  #  input2 = st.sidebar.slider("Input 2", 0, 100)
+   # if st.sidebar.button("Save to database"):
+    #    conn.execute(f"INSERT INTO test (INPUT1, INPUT2) VALUES ({input1}, {input2})")
+     #   conn.commit()
 
 
 def display_data(conn: Connection):
