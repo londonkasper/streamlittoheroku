@@ -33,7 +33,7 @@ def init_db(conn: Connection):
     conn.execute(
         """CREATE TABLE IF NOT EXISTS test
             (
-                INPUT TEXT
+                INPUT BLOB
             );"""
     )
     conn.commit()
