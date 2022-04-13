@@ -1,6 +1,5 @@
 streamlit
 pandas
-pathlib
 Path
 sqlite3
 Connection
