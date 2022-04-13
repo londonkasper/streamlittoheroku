@@ -5,7 +5,7 @@ from pathlib import Path
 import sqlite3
 from sqlite3 import Connection
 # if 'x' not in st.session_state:
-	st.session_state.x =0
+	# st.session_state.x =0
 
 # increment = st.button("increment")
 # if increment:
