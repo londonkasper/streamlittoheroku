@@ -23,7 +23,7 @@ def main():
     
     conn = get_connection(URI_SQLITE_DB)
     init_db(conn)
-
+    build_input(conn)
     # build_sidebar(conn)
     display_data(conn)
     run_calculator(conn)
